@@ -10,11 +10,11 @@ Easy to use .ics generator for importing your Webuntis calendar into your own ca
 This will sync with WebUntis whenever your client syncs the url.
 
 ### Tested clients
-| Client | Rating | Reasoning |
-|---|---|---|
-| [Google calendar](https://calendar.google.com) | 3/5 | Very inconsistend syncing, no force sync. Widely available. 
-| [Nextcloud calendar](https://apps.nextcloud.com/apps/calendar) | 4/5 | Inconsistend syncing, no force sync. Only on web.
-| [ICSx⁵](https://github.com/bitfireAT/icsx5) | 5/5 | Syncs consistently, force sync option. Only on Android.
+| Client | Comment |
+|---|---|
+| [Google calendar](https://calendar.google.com) | Very inconsistend syncing, no force sync. Widely available. 
+| [Nextcloud calendar](https://apps.nextcloud.com/apps/calendar) | Inconsistend syncing, no force sync. Only on web.
+| [ICSx⁵](https://github.com/bitfireAT/icsx5) | Syncs consistently, force sync option. Only on Android.
 
 Theoretically this should work in any calendar client that supports importing from url and some might have better results, these are just the ones I've tested myself with my experience.
 
