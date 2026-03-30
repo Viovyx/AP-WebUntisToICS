@@ -46,7 +46,7 @@ def getTimeTable(classId):
     }
 
     response = session.get(
-        url=url, params=params, headers=headers, expire_after=timedelta(weeks=1)
+        url=url, params=params, headers=headers, expire_after=timedelta(minutes=15)
     )
     data = response.json()
 
