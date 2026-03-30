@@ -27,7 +27,7 @@ You can always fork and host this project yourself ofcourse.
 Made to work for [AP Hogeschool WebUntis](https://ap.webuntis.com/)
 
 ## Issues
-If you run into any issues or bugs please create an issue [here](https://github.com/Viovyx/AP-WebUntisToICS/issues) and I'll do my best to resolve it.
+If you run into a bug or issue (that is not related to the [the disclaimers](#disclaimers)), please create an issue [here](https://github.com/Viovyx/AP-WebUntisToICS/issues), and I'll do my best to resolve it.
 
 ---
 #### Credits
