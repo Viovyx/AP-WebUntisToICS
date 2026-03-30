@@ -2,7 +2,7 @@ from datetime import timedelta
 import requests_cache
 
 baseUrl = "https://ap.webuntis.com/WebUntis/api/rest/view/v1"
-session = requests_cache.CachedSession("cache", expire_after=timedelta(days=1))
+session = requests_cache.CachedSession("cache")
 
 
 def getClasses():
@@ -10,7 +10,9 @@ def getClasses():
     params = {"resourceType": "CLASS"}
     headers = {"anonymous-school": "ap"}
 
-    response = session.get(url=url, params=params, headers=headers)
+    response = session.get(
+        url=url, params=params, headers=headers, expire_after=timedelta(weeks=1)
+    )
     data = response.json()
     classes = data["classes"]
 
