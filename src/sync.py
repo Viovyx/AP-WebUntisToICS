@@ -14,7 +14,9 @@ def generateCalendar(classId):
     cal.add("x-wr-timezone", "Europe/Brussels")
     timezone = pytz.timezone("Europe/Brussels")
 
-    for lesson in lessons:
+    for lessonId in range(len(lessons)):
+        lesson = lessons[lessonId]
+
         event = Event()
 
         event.add("summary", f"{lesson["subject"]} ({lesson["info"]})")
@@ -30,7 +32,7 @@ def generateCalendar(classId):
         ]
         event.add("description", "\n".join(descriptionLines))
 
-        uid = f"{lesson["end"] - lesson["start"]}-{lesson["subject"]}-{lesson["info"]}@webuntis-sync"
+        uid = f"{lessonId}-{lesson["start"]}-{summary}@webuntis-sync"
         event.add("uid", uid)
 
         cal.add_component(event)
