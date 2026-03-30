@@ -26,6 +26,9 @@ You can always fork and host this project yourself ofcourse.
 
 Made to work for [AP Hogeschool WebUntis](https://ap.webuntis.com/)
 
+## Issues
+If you run into any issues or bugs please create an issue [here](https://github.com/Viovyx/AP-WebUntisToICS/issues) and I'll do my best to resolve it.
+
 ---
 #### Credits
 > I got inspiration from [this](https://github.com/K41680/WebUntisSync) original project, which I had been using up until I made this.
