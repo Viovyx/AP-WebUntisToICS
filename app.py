@@ -13,7 +13,7 @@ def home():
             classes=getClasses(),
         )
     except Exception as e:
-        return str(e), 500
+        return e, 500
 
 
 if __name__ == "__main__":

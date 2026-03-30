@@ -21,16 +21,18 @@ h1 {
     margin-bottom: 5rem;
 }
 
-.class-list > a {
+.class-list > div {
     display: block;
     text-decoration: none;
     color: inherit;
     border: 0.3rem grey solid;
     border-radius: 10rem;
-    padding: 1rem 2rem;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     transition: scale 0.1s ease-out;
+    cursor: pointer;
 
     span {
         color: grey;
