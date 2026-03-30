@@ -18,11 +18,11 @@ def generateCalendar(classId):
         lesson = lessons[lessonId]
 
         event = Event()
-
-        event.add("summary", f"{lesson["subject"]} ({lesson["info"]})")
+        summary = lesson["subject"] + f"({lesson["info"]}" if lesson["info"] else ""
+        event.add("summary", summary)
         event.add("dtstart", timezone.localize(datetime.fromtimestamp(lesson["start"])))
         event.add("dtend", timezone.localize(datetime.fromtimestamp(lesson["end"])))
-        event.add("location", ", ".join(lesson["locations"]))
+        event.add("location", " / ".join(lesson["locations"]))
 
         descriptionLines = [
             lesson["teacher"],
