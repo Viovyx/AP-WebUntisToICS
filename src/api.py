@@ -4,7 +4,7 @@ import json
 
 baseUrl = "https://ap.webuntis.com/WebUntis/api/rest/view/v1"
 headers = {"anonymous-school": "ap"}
-session = requests_cache.CachedSession("cache")
+session = requests_cache.CachedSession(cache_name="/tmp/cache", backend="sqlite")
 thisClass = ""
 
 
