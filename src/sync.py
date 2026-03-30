@@ -18,7 +18,7 @@ def generateCalendar(classId):
         lesson = lessons[lessonId]
 
         event = Event()
-        summary = lesson["subject"] + f"({lesson["info"]}" if lesson["info"] else ""
+        summary = lesson["subject"] + f" ({lesson["info"]})" if lesson["info"] else ""
         event.add("summary", summary)
         event.add("dtstart", timezone.localize(datetime.fromtimestamp(lesson["start"])))
         event.add("dtend", timezone.localize(datetime.fromtimestamp(lesson["end"])))
