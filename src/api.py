@@ -65,10 +65,15 @@ def mapEntry(entry):
     global thisClass
     classes = [
         el["current"]["displayName"]
-        for el in (entry["position5"] if entry["position5"] != None else [])
+        for el in (entry["position5"] if entry["position5"] else [])
     ]
     classes.append(thisClass)
     classes.sort()
+
+    locations = [
+        el["current"]["shortName"]
+        for el in (entry["position3"] if entry["position3"] else [])
+    ]
 
     return {
         "start": parseTime(entry["duration"]["start"]),
@@ -76,7 +81,7 @@ def mapEntry(entry):
         "info": entry["lessonInfo"],
         "teacher": entry["position1"][0]["current"]["longName"],
         "subject": entry["position2"][0]["current"]["longName"],
-        "location": entry["position3"][0]["current"]["shortName"],
+        "locations": locations,
         "classes": classes,
     }
 
@@ -84,3 +89,17 @@ def mapEntry(entry):
 def parseTime(timeStr):
     dt = datetime.strptime(timeStr, "%Y-%m-%dT%H:%M")
     return dt.timestamp()
+
+
+def getLessons(classId):
+    lessons = []
+    timetable = getTimeTable(classId)
+
+    for day in timetable:
+        entries = day["entries"]
+
+        if len(entries) > 0:
+            for entry in entries:
+                lessons.append(entry)
+
+    return lessons
