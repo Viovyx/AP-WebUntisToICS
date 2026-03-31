@@ -12,6 +12,13 @@ body {
 
 h1 {
     border-bottom: 0.3rem #eee solid;
+    margin-bottom: 0.1rem;
+}
+
+body > p {
+    text-align: center;
+    color: grey;
+    margin-bottom: 2rem;
 }
 
 .class-list {
