@@ -27,9 +27,11 @@ def generateCalendar(classId):
         descriptionLines = [
             lesson["teacher"],
             " / ".join(lesson["classes"]),
-            "-" * 20,
-            f"ℹ️ {lesson["info"]}",
         ]
+        if lesson["info"]:
+            descriptionLines.append("-" * 20)
+            descriptionLines.append(f"ℹ️ {lesson["info"]}")
+
         event.add("description", "\n".join(descriptionLines))
 
         uid = f"{lessonId}-{lesson["start"]}-{summary}@webuntis-sync"
