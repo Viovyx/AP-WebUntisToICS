@@ -20,7 +20,7 @@
             function copy(classId) {
                 url = location.href + "calendar?class=" + classId;
                 navigator.clipboard.writeText(url);
-                alert(`Copied '${url}' to clipboard!`);
+                alert(`${url} copied to clipboard!\nPaste it in your calendar app to sync.`);
             }
         </script>
     </body>
