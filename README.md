@@ -16,7 +16,7 @@ This will sync with WebUntis whenever your client syncs the url.
 | -------------------------------------------------------------- | ----------------------------------------------------------- |
 | [Google calendar](https://calendar.google.com)                 | Very inconsistend syncing, no force sync. Widely available. |
 | [Nextcloud calendar](https://apps.nextcloud.com/apps/calendar) | Inconsistend syncing, no force sync. Only on web.           |
-| [ICSx⁵](https://github.com/bitfireAT/icsx5)                    | Syncs consistently, force sync option. Only on Android.     |
+| [ICSx⁵](https://icsx5.bitfire.at/)                    | Syncs consistently, force sync option. Only on Android.     |
 
 Theoretically this should work in any calendar client that supports importing from url and some might have better results, these are just the ones I've tested myself with my experience.
 
