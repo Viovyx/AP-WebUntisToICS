@@ -16,25 +16,25 @@ def generateCalendar(classId):
 
     for lessonId in range(len(lessons)):
         lesson = lessons[lessonId]
-
         event = Event()
-        summary = lesson["subject"] + (f" ({lesson["info"]})" if lesson["info"] else "")
-        event.add("summary", summary)
-        event.add("dtstart", timezone.localize(datetime.fromtimestamp(lesson["start"])))
-        event.add("dtend", timezone.localize(datetime.fromtimestamp(lesson["end"])))
-        event.add("location", " / ".join(lesson["locations"]))
 
+        summary = lesson["subject"]
+        uid = f"{lessonId}-{lesson["start"]}-{summary}@webuntis-sync"
         descriptionLines = [
             lesson["teacher"],
             " / ".join(lesson["classes"]),
         ]
+
         if lesson["info"]:
             descriptionLines.append("-" * 20)
             descriptionLines.append(f"ℹ️ {lesson["info"]}")
+            summary += f" ({lesson["info"]})"
 
+        event.add("summary", summary)
         event.add("description", "\n".join(descriptionLines))
-
-        uid = f"{lessonId}-{lesson["start"]}-{summary}@webuntis-sync"
+        event.add("location", " / ".join(lesson["locations"]))
+        event.add("dtstart", timezone.localize(datetime.fromtimestamp(lesson["start"])))
+        event.add("dtend", timezone.localize(datetime.fromtimestamp(lesson["end"])))
         event.add("uid", uid)
 
         cal.add_component(event)
