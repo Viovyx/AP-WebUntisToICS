@@ -2,6 +2,15 @@
 
 Easy to use .ics generator for importing your Webuntis calendar into your own calendar app.
 
+> [!NOTE]
+> **New feature: [Merging similar events](https://github.com/Viovyx/AP-WebUntisToICS/commit/3f6a658351f80b2a19f5602ab7ac850d1721ccf2)**
+>
+> Events that are duplicate (ex. same time & subject) will now be merged together.
+> 
+> I've done my best to triple check this features functionality but it may not work as expected for some edge cases.
+> 
+> If you notice that events are being merged incorrectly please create an issue and explain what's incorrect.
+
 ## Usage
 
 1. Go to the public url above
