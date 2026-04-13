@@ -26,11 +26,16 @@ def mapEntry(entry, thisClass):
         for el in (entry["position3"] if entry["position3"] else [])
     ]
 
+    teachers = [
+        el["current"]["longName"]
+        for el in (entry["position1"] if entry["position1"] else [])
+    ]
+
     return {
         "start": parseTime(entry["duration"]["start"]),
         "end": parseTime(entry["duration"]["end"]),
         "info": entry["lessonInfo"],
-        "teacher": entry["position1"][0]["current"]["longName"],
+        "teachers": teachers,
         "subject": entry["position2"][0]["current"]["longName"],
         "locations": locations,
         "classes": classes,

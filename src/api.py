@@ -2,6 +2,7 @@ from datetime import timedelta
 import requests_cache
 import json
 from src.mappers import mapClass, mapDay
+from src.helpers import entriesSimilar, mergeEntries
 
 baseUrl = "https://ap.webuntis.com/WebUntis/api/rest/view/v1"
 headers = {"anonymous-school": "ap"}
@@ -57,7 +58,17 @@ def getLessons(classId):
         entries = day["entries"]
 
         if len(entries) > 0:
-            for entry in entries:
-                lessons.append(entry)
+            for entryId in range(len(entries)):
+                prevEntry = lessons[-1] if lessons else None
+                entry = entries[entryId]
+
+                match entriesSimilar(prevEntry, entry):
+                    case "same":
+                        lessons[-1] = mergeEntries(prevEntry, entry)
+                    case "combine":
+                        prevEntry["end"] = entry["end"]
+                        lessons[-1] = mergeEntries(prevEntry, entry)
+                    case _:
+                        lessons.append(entry)
 
     return lessons

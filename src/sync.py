@@ -21,7 +21,8 @@ def generateCalendar(classId):
         summary = lesson["subject"]
         uid = f"{lessonId}-{lesson["start"]}-{summary}@webuntis-sync"
         descriptionLines = [
-            lesson["teacher"],
+            ", ".join(lesson["teachers"]),
+            "-" * 20,
             " / ".join(lesson["classes"]),
         ]
 
