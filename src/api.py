@@ -1,11 +1,11 @@
-from datetime import timedelta, datetime
+from datetime import timedelta
 import requests_cache
 import json
+from src.mappers import mapClass, mapDay
 
 baseUrl = "https://ap.webuntis.com/WebUntis/api/rest/view/v1"
 headers = {"anonymous-school": "ap"}
 session = requests_cache.CachedSession(cache_name="/tmp/cache", backend="sqlite")
-thisClass = ""
 
 
 def getClasses():
@@ -19,10 +19,6 @@ def getClasses():
     classes = data["classes"]
 
     return list(map(mapClass, classes))
-
-
-def mapClass(classData):
-    return {"id": classData["class"]["id"], "name": classData["class"]["displayName"]}
 
 
 def getCurrentSchoolYear():
@@ -51,44 +47,6 @@ def getTimeTable(classId):
     data = response.json()
 
     return list(map(mapDay, data["days"]))
-
-
-def mapDay(day):
-    global thisClass
-    thisClass = day["resource"]["shortName"]
-    entries = list(map(mapEntry, day["gridEntries"]))
-
-    return {"date": day["date"], "entries": entries}
-
-
-def mapEntry(entry):
-    global thisClass
-    classes = [
-        el["current"]["displayName"]
-        for el in (entry["position5"] if entry["position5"] else [])
-    ]
-    classes.append(thisClass)
-    classes.sort()
-
-    locations = [
-        el["current"]["shortName"]
-        for el in (entry["position3"] if entry["position3"] else [])
-    ]
-
-    return {
-        "start": parseTime(entry["duration"]["start"]),
-        "end": parseTime(entry["duration"]["end"]),
-        "info": entry["lessonInfo"],
-        "teacher": entry["position1"][0]["current"]["longName"],
-        "subject": entry["position2"][0]["current"]["longName"],
-        "locations": locations,
-        "classes": classes,
-    }
-
-
-def parseTime(timeStr):
-    dt = datetime.strptime(timeStr, "%Y-%m-%dT%H:%M")
-    return dt.timestamp()
 
 
 def getLessons(classId):
